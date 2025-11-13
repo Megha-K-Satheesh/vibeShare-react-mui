@@ -3,11 +3,29 @@
 import { Bookmark, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import SendIcon from "@mui/icons-material/Send";
-import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, ListItemText, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, ListItemText, styled, Typography } from "@mui/material";
 import PostImg from "../assets/sean-oulashin-KMn4VEeEPR8-unsplash (1).jpg";
 function Post () {
+
+  const StyledIcon =styled(IconButton)(({theme})=>({
+        "& svg":{
+          fontSize:"25px",
+        
+        },
+      
+        
+       [theme.breakpoints.down("sm")]:{
+        "& svg":{
+          fontSize:"14px",
+          marginTop:"-20px",
+          
+        }
+          
+       }
+  }))
+
   return (
-    <Card sx={{ margin: 4 }}>
+    <Card sx={{ margin: {xs:2,sm:4} }}>
     
       <CardHeader
         avatar={
@@ -27,33 +45,53 @@ function Post () {
   
     <CardMedia
         component="img"
-        height="350"
-        image={PostImg} // 
+        
+        
+        image={PostImg} 
         alt="Example Image"
+        sx={{height:{sm:380,xm:300}}}
       />
 
-     <Box sx={{height:"60px"}}>
+     <Box sx={{ height:{xs:"20px",sm:"60px"}}}>
 
-      <CardActions disableSpacing>
+      <CardActions sx={{marginLeft:"-15px"}}>
         
-        <IconButton aria-label="like">
+        <StyledIcon aria-label="like">
           <Checkbox
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite sx={{ color: "red" }} />}
             />
-            <ListItemText secondary="300 likes"/>
-        </IconButton>
+           <ListItemText   secondary="300 likes"
+  sx={(theme) => ({
+    margin: { xs: "-18px 0px 0px -8px",sm:"7px 0px 0px -8px" },
+    "& .MuiTypography-root": {
+      fontSize: "7px", // default for xs
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "12px", // for small and above
+      },
+    },
+  })} />
+        </StyledIcon>
 
-       <IconButton >
-          <ChatBubbleOutlineIcon sx={{borderRadius:"100px"}} />
-            <ListItemText secondary= " 200"/>
-        </IconButton>
-        <IconButton>
+       <StyledIcon >
+          <ChatBubbleOutlineIcon  sx={{borderRadius:"100px"}} />
+            <ListItemText secondary="200" sx={(theme) => ({
+    margin: { xs: "-18px 0px 0px 2px",sm:"7px 0px 0px 0px" },
+    "& .MuiTypography-root": {
+      fontSize: "7px", 
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "12px", 
+      },
+    },
+  })} 
+            />
+        </StyledIcon>
+        <StyledIcon>
           <SendIcon/>
-        </IconButton>
-        <IconButton sx={{marginLeft:{xs:"13%",sm:"45%",md:"60%"}}}>
-          <Bookmark/>
-        </IconButton>
+        </StyledIcon>
+          <StyledIcon >
+          <Bookmark sx={{marginLeft:{xs:"150px",sm:"485px"}}}/>
+        </StyledIcon>
       </CardActions>
       </Box>
 
@@ -62,7 +100,7 @@ function Post () {
        {/* Post Content */}
        <CardActions>
          <CardContent  >
-        <Typography  variant="body1" color="text.secondary">
+        <Typography  color="text.secondary" sx={{ fontSize:{xs:"13px",sm:"18px"}}}>
          "Sandy toes, sun-kissed nose, and a mind full of code—finding the perfect balance between debugging life and chasing sunsets.   <br />
           #BeachVibes #WomenInTech #CodeAndCoast
         </Typography>

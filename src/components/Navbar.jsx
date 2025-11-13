@@ -23,7 +23,7 @@ const UserBox = styled(Box )(()=>({
 function Navbar(){
 return(<>
     
-    <AppBar position="sticky"sx={{backgroundColor:"yellow"}}>
+    <AppBar position="sticky">
      <StyledToolbar >
        <Typography variant="h4" sx={{fontFamily:"roboto"}}> VibeShare </Typography>
        <UserBox>

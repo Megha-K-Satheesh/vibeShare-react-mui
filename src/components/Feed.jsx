@@ -16,7 +16,9 @@ const Feed = () => {
   }, []);
 
   return (
-    <Box flex={4} p={{ xs: 0, md: 2 }} sx={{backgroundColor:"#f7f6f2"}}>
+    <Box flex={12} p={{ xs: 0, md: 2 }} sx={{backgroundColor:"#f7f6f2",
+      flex:{xs:12,sm:4}
+    }}>
       {loading ? (
         <Stack spacing={2}>
           {/* Skeleton placeholders for posts */}

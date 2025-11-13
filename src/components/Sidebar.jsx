@@ -9,13 +9,19 @@ import { styled } from '@mui/material/styles';
 import MenuIcon from "@mui/icons-material/Menu";
 function Sidebar(){
 
-  const  StyleListText = styled(ListItemText)({
+  const  StyleListText = styled(ListItemText)(({theme})=>({
        marginTop:"21px",
-       marginLeft:"0px",
+       marginLeft:"-15px",
+       
        
         "& .MuiTypography-root": {
-    fontSize: "15px",}
-  })
+
+    fontSize: "15px",},
+    [theme.breakpoints.down("sm")]:{
+      display:"none"
+    }
+  
+  }))
   
 
 
@@ -23,20 +29,31 @@ function Sidebar(){
   return(<>
   <Box 
     bgcolor="background.default" 
-    flex={1} 
-    p={2} 
+    position={"relative"}
+   
     
-    sx={{display:{ xs:"none",sm:"block"},height:"100vh",
+    sx={{display:{ sm:"block"},height:"100vh",
+  
+    flex:{xs:0.6,sm:1},
+    p:{xs:1,sm:2}
   }}
   >
-     <Box position={"fixed"} >
+     <Box position="fixed" sm={{ background: "linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf)",}}>
        <List   sx={{
-                 marginLeft:"40px",
+                 marginLeft:{xs:"0",sm:"40px"},
+                 position:"absolute",
+                 left:{xs:"-10px",sm:"-26px"}
+                 ,
+                 top:"-10px",
+                  
+                  width:{xs:"52px"},
+                  height:{xs:"100vh"},
+                    background:{xs:"linear-gradient(45deg, #962fbf, #d62976, #fa7e1e, #feda75)",sm:"white"},
                  "& .MuiListItemIcon-root > svg": {
-                 fontSize: 28,
+                 fontSize: {xs:26,sm:28},
                  marginTop:"13px",
-                 marginRight:"1px",
-                 marginLeft:"15px",
+                
+                 
                                             
                   },
              }}>
